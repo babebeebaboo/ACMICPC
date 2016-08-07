@@ -25,8 +25,24 @@ int main()
         {
             if(adown[i] == ban[j])
             {
-                adown[i]-=1;
-                if(i+1<lena)adown[i+1]='9';
+                /*adown[i]-=1;
+                if(i+1<lena)adown[i+1]='9';*/
+                if(adown[i]=='0')
+                {
+                    if(i!=0)
+                    {
+                        adown[i-1]--;
+                    }
+                    adown[i]='9';
+                }
+                else
+                {
+                    adown[i]-=1;
+                    for(int k=i+1; k<lena; k++)
+                    {
+                        adown[k]='9';
+                    }
+                }
             }
         }
     }
@@ -34,10 +50,23 @@ int main()
     {
         for (int j=0; j<numban; j++)
         {
-            if(aup[i] == ban[j])
+            /*if(aup[i] == ban[j])
             {
                 aup[i]+=1;
                 if(i+1<lena)aup[i+1]='0';
+                if(aup[i]>'9')
+                {
+                    aup[i]='0';
+                    aup[i-1]+=1;
+                }
+            }*/
+            if(aup[i] == ban[j])
+            {
+                aup[i]+=1;
+                for(int k=i+1; k<lena; k++)
+                {
+                    aup[k]='0';
+                }
             }
         }
     }
